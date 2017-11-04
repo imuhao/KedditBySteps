@@ -9,7 +9,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?): Unit {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        changeFragment(NewsFragment())
     }
+
 
     fun changeFragment(f: Fragment) {
         val ft = supportFragmentManager.beginTransaction()
