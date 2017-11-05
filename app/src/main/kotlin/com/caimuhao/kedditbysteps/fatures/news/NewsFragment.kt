@@ -1,4 +1,4 @@
-package com.caimuhao.kedditbysteps
+package com.caimuhao.kedditbysteps.fatures.news
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,7 +6,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.caimuhao.kedditbysteps.R
 import com.caimuhao.kedditbysteps.commons.inflate
+import com.caimuhao.kedditbysteps.fatures.news.adapter.NewsAdapter
 import kotlinx.android.synthetic.main.fragment_news.*
 
 /**
@@ -15,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_news.*
  * @desc ${TODD}
  */
 class NewsFragment : Fragment() {
+
 
     private val newsList by lazy {
         news_list.setHasFixedSize(true)
@@ -28,6 +31,7 @@ class NewsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        var adapter = NewsAdapter()
+        newsList.adapter = adapter
     }
 }
