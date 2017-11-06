@@ -26,10 +26,6 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         delegateAdapters.put(AdapterConstants.LOADING, LoadingDelegateAdapter())
         delegateAdapters.put(AdapterConstants.NEWS, NewsDelegateAdapter())
         items = ArrayList()
-        for (i in 1..10) {
-            items.add(RedditNewsItem("Smile", "title"))
-        }
-        items.add(loadingItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
