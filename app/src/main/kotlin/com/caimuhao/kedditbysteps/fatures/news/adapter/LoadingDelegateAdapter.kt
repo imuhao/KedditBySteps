@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.caimuhao.kedditbysteps.R
 import com.caimuhao.kedditbysteps.commons.adapter.ViewType
 import com.caimuhao.kedditbysteps.commons.adapter.ViewTypeDelegateAdapter
-import com.caimuhao.kedditbysteps.commons.inflate
+import com.caimuhao.kedditbysteps.commons.extensions.inflate
 
 /**
  * @author Smile

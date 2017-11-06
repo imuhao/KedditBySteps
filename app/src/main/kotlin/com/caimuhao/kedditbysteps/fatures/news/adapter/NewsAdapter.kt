@@ -3,6 +3,7 @@ package com.caimuhao.kedditbysteps.fatures.news.adapter
 import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import com.caimuhao.kedditbysteps.bean.RedditNewsItem
 import com.caimuhao.kedditbysteps.commons.adapter.AdapterConstants
 import com.caimuhao.kedditbysteps.commons.adapter.ViewType
 import com.caimuhao.kedditbysteps.commons.adapter.ViewTypeDelegateAdapter
@@ -23,7 +24,11 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     init {
         delegateAdapters.put(AdapterConstants.LOADING, LoadingDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.NEWS, NewsDelegateAdapter())
         items = ArrayList()
+        for (i in 1..10) {
+            items.add(RedditNewsItem("Smile", "title"))
+        }
         items.add(loadingItem)
     }
 

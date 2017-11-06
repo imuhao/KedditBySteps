@@ -1,4 +1,4 @@
-package com.caimuhao.kedditbysteps.fatures.news
+package com.caimuhao.kedditbysteps.bean
 
 import com.caimuhao.kedditbysteps.commons.adapter.AdapterConstants
 import com.caimuhao.kedditbysteps.commons.adapter.ViewType
