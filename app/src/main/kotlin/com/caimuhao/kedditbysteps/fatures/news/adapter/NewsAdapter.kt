@@ -44,4 +44,11 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int) = items.get(position).getViewType()
 
+    fun getNews(): List<RedditNewsItem> {
+        return items.filter {
+            it.getViewType() == AdapterConstants.NEWS
+        }.map {
+            it as RedditNewsItem
+        }
+    }
 }

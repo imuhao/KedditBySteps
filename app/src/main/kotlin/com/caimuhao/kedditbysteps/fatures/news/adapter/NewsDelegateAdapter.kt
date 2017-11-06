@@ -7,6 +7,7 @@ import com.caimuhao.kedditbysteps.bean.RedditNewsItem
 import com.caimuhao.kedditbysteps.commons.adapter.ViewType
 import com.caimuhao.kedditbysteps.commons.adapter.ViewTypeDelegateAdapter
 import com.caimuhao.kedditbysteps.commons.extensions.inflate
+import com.caimuhao.kedditbysteps.commons.extensions.loadImg
 import kotlinx.android.synthetic.main.news_item.view.*
 
 /**
@@ -34,7 +35,7 @@ class NewsDelegateAdapter : ViewTypeDelegateAdapter {
         fun bind(item: RedditNewsItem) {
             description.text = item.title
             author.text = item.author
-
+            img_thumbnail.loadImg("")
         }
     }
 }
