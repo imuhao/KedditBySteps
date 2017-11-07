@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import com.caimuhao.kedditbysteps.R
 import com.caimuhao.kedditbysteps.commons.BaseFragment
 import com.caimuhao.kedditbysteps.commons.extensions.inflate
+import com.caimuhao.kedditbysteps.commons.extensions.showToast
 import com.caimuhao.kedditbysteps.fatures.news.adapter.NewsAdapter
 import kotlinx.android.synthetic.main.fragment_news.*
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 /**
  * @author Smile
@@ -36,5 +39,19 @@ class NewsFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         var adapter = NewsAdapter()
         newsList.adapter = adapter
+
+        refreshData()
+    }
+
+    fun refreshData() {
+        newsManager.getNews("", 10)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ retrievedNews ->
+                    var redditNews = retrievedNews
+                    (newsList.adapter as NewsAdapter).addNews(redditNews.news)
+                }, { error ->
+                    showToast(error.message ?: "")
+                })
     }
 }

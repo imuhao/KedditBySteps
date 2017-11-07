@@ -28,6 +28,12 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         items = ArrayList()
     }
 
+    fun addNews(news: List<RedditNewsItem>) {
+        items.addAll(news)
+
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return delegateAdapters.get(viewType).onCreateViewHolder(parent)
     }

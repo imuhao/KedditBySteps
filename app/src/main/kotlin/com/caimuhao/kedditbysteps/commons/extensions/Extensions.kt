@@ -2,11 +2,13 @@
 
 package com.caimuhao.kedditbysteps.commons.extensions
 
+import android.support.v4.app.Fragment
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import com.caimuhao.kedditbysteps.R
 import com.squareup.picasso.Picasso
 
@@ -26,4 +28,8 @@ fun ImageView.loadImg(imageUrl: String) {
     } else {
         Picasso.with(context).load(imageUrl).into(this)
     }
+}
+
+fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(context, message, duration)
 }
