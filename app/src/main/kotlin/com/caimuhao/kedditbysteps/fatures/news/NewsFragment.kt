@@ -2,12 +2,13 @@ package com.caimuhao.kedditbysteps.fatures.news
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.caimuhao.kedditbysteps.R
+import com.caimuhao.kedditbysteps.api.RedditNews
 import com.caimuhao.kedditbysteps.commons.BaseFragment
+import com.caimuhao.kedditbysteps.commons.InfiniteScrollListener
 import com.caimuhao.kedditbysteps.commons.extensions.inflate
 import com.caimuhao.kedditbysteps.commons.extensions.showToast
 import com.caimuhao.kedditbysteps.fatures.news.adapter.NewsAdapter
@@ -22,14 +23,10 @@ import rx.schedulers.Schedulers
  */
 class NewsFragment : BaseFragment() {
 
+    private var redditNews: RedditNews? = null
+
     private val newsManager by lazy {
         NewsManager()
-    }
-
-    private val newsList by lazy {
-        news_list.setHasFixedSize(true)
-        news_list.layoutManager = LinearLayoutManager(context)
-        news_list
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,19 +35,24 @@ class NewsFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        var adapter = NewsAdapter()
-        newsList.adapter = adapter
 
-        refreshData()
+        news_list.apply {
+            news_list.setHasFixedSize(true)
+            news_list.layoutManager = LinearLayoutManager(context)
+            clearOnScrollListeners()
+            addOnScrollListener(InfiniteScrollListener({ requestData() }, news_list.layoutManager as LinearLayoutManager))
+            adapter = NewsAdapter()
+        }
+        requestData()
     }
 
-    private fun refreshData() {
-        newsManager.getNews("", 10)
+    private fun requestData() {
+        newsManager.getNews(redditNews?.after ?: "", 10)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ retrievedNews ->
-                    var news = retrievedNews
-                    (newsList.adapter as NewsAdapter).addNews(news.news)
+                    redditNews = retrievedNews
+                    (news_list.adapter as NewsAdapter).addNews(retrievedNews.news)
                 }, { error ->
                     showToast(error.message ?: "")
                 })
