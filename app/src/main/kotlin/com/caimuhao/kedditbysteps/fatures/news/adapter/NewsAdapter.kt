@@ -26,12 +26,18 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         delegateAdapters.put(AdapterConstants.LOADING, LoadingDelegateAdapter())
         delegateAdapters.put(AdapterConstants.NEWS, NewsDelegateAdapter())
         items = ArrayList()
+        items.add(loadingItem)
     }
 
     fun addNews(news: List<RedditNewsItem>) {
-        items.addAll(news)
+        var beforeSize = items.size - 1
+        items.removeAt(beforeSize)
+        notifyItemRemoved(beforeSize)
 
-        notifyDataSetChanged()
+        items.addAll(news)
+        items.add(loadingItem)
+        notifyItemRangeChanged(beforeSize, items.size + 1)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

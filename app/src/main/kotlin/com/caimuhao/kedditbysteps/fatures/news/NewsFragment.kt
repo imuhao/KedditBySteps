@@ -2,6 +2,7 @@ package com.caimuhao.kedditbysteps.fatures.news
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,13 +44,13 @@ class NewsFragment : BaseFragment() {
         refreshData()
     }
 
-    fun refreshData() {
+    private fun refreshData() {
         newsManager.getNews("", 10)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ retrievedNews ->
-                    var redditNews = retrievedNews
-                    (newsList.adapter as NewsAdapter).addNews(redditNews.news)
+                    var news = retrievedNews
+                    (newsList.adapter as NewsAdapter).addNews(news.news)
                 }, { error ->
                     showToast(error.message ?: "")
                 })
