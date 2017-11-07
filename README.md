@@ -8,3 +8,4 @@
 - [Kotlin — Part 4:RecyclerView— Kotlin 适配器委托&数据类](http://caimuhao.com/2017/11/05/Learn-Kotlin-While-Developing-An-Android-App-Part4/)
 - [Kotlin — Part 5:Kotlin,RxJava&RxAndroid](http://caimuhao.com/2017/11/06/Learn-Kotlin-While-Developing-An-Android-App-Part5/)
 - [Kotlin — Part 6:API-Retrofit&Kotlin](http://caimuhao.com/2017/11/07/Learn-Kotlin-While-Developing-An-Android-App-Part6/)
+- [Kotlin — Part 7:无限滑动:高阶函数&Lambdas](http://caimuhao.com/2017/11/07/Learn-Kotlin-While-Developing-An-Android-App-Part7/)
