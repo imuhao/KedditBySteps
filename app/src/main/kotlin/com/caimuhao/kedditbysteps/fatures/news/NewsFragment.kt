@@ -38,7 +38,8 @@ class NewsFragment : BaseFragment() {
 
         news_list.apply {
             news_list.setHasFixedSize(true)
-            news_list.layoutManager = LinearLayoutManager(context)
+            var layoutManager = LinearLayoutManager(context)
+            news_list.layoutManager = layoutManager
             clearOnScrollListeners()
             addOnScrollListener(InfiniteScrollListener({ requestData() }, news_list.layoutManager as LinearLayoutManager))
             adapter = NewsAdapter()
