@@ -49,7 +49,7 @@ class NewsFragment : BaseFragment() {
             adapter = NewsAdapter()
         }
         if (savedInstanceState != null && savedInstanceState.containsKey(KEY_REDDIT_NEWS)) {
-            var redittNews = savedInstanceState[KEY_REDDIT_NEWS] as RedditNews
+            var redittNews = savedInstanceState.get(KEY_REDDIT_NEWS) as RedditNews
             (news_list.adapter as NewsAdapter).clearAndAddNews(redditNews!!.news)
         } else {
             requestData()
