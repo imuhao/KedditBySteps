@@ -11,69 +11,57 @@ import com.caimuhao.kedditbysteps.commons.adapter.ViewType
  * @desc ${TODD}
  */
 
-data class RedditNews(var after: String, var before: String, var news: List<RedditNewsItem>) : Parcelable {
-
-    constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readString(),
-            parcel.createTypedArrayList(RedditNewsItem)) {
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(after)
-        parcel.writeString(before)
-        parcel.writeTypedList(news)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<RedditNews> {
-        override fun createFromParcel(parcel: Parcel): RedditNews {
-            return RedditNews(parcel)
-        }
-
-        override fun newArray(size: Int): Array<RedditNews?> {
-            return arrayOfNulls(size)
+data class RedditNews(
+        val after: String,
+        val before: String,
+        val news: List<RedditNewsItem>) : Parcelable {
+    companion object {
+        @Suppress("unused")
+        @JvmField val CREATOR: Parcelable.Creator<RedditNews> = object : Parcelable.Creator<RedditNews> {
+            override fun createFromParcel(source: Parcel): RedditNews = RedditNews(source)
+            override fun newArray(size: Int): Array<RedditNews?> = arrayOfNulls(size)
         }
     }
 
+    constructor(source: Parcel) : this(source.readString(), source.readString(), source.createTypedArrayList(RedditNewsItem.CREATOR))
+
+    override fun describeContents() = 0
+
+    override fun writeToParcel(dest: Parcel?, flags: Int) {
+        dest?.writeString(after)
+        dest?.writeString(before)
+        dest?.writeTypedList(news)
+    }
 }
 
-data class RedditNewsItem(var author: String, var title: String, var num_comments: Int,
-                          var created: Long, var thumbnail: String, var url: String
+data class RedditNewsItem(
+        val author: String,
+        val title: String,
+        val numComments: Int,
+        val created: Long,
+        val thumbnail: String,
+        val url: String?
 ) : ViewType, Parcelable {
-    constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readInt(),
-            parcel.readLong(),
-            parcel.readString(),
-            parcel.readString()) {
-    }
 
     override fun getViewType() = AdapterConstants.NEWS
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(author)
-        parcel.writeString(title)
-        parcel.writeInt(num_comments)
-        parcel.writeLong(created)
-        parcel.writeString(thumbnail)
-        parcel.writeString(url)
+
+    companion object {
+        @JvmField val CREATOR: Parcelable.Creator<RedditNewsItem> = object : Parcelable.Creator<RedditNewsItem> {
+            override fun createFromParcel(source: Parcel): RedditNewsItem = RedditNewsItem(source)
+            override fun newArray(size: Int): Array<RedditNewsItem?> = arrayOfNulls(size)
+        }
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    constructor(source: Parcel) : this(source.readString(), source.readString(), source.readInt(), source.readLong(), source.readString(), source.readString())
 
-    companion object CREATOR : Parcelable.Creator<RedditNewsItem> {
-        override fun createFromParcel(parcel: Parcel): RedditNewsItem {
-            return RedditNewsItem(parcel)
-        }
+    override fun describeContents() = 0
 
-        override fun newArray(size: Int): Array<RedditNewsItem?> {
-            return arrayOfNulls(size)
-        }
+    override fun writeToParcel(dest: Parcel?, flags: Int) {
+        dest?.writeString(author)
+        dest?.writeString(title)
+        dest?.writeInt(numComments)
+        dest?.writeLong(created)
+        dest?.writeString(thumbnail)
+        dest?.writeString(url)
     }
 }

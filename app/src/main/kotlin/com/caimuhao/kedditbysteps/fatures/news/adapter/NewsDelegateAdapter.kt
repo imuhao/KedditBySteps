@@ -37,7 +37,7 @@ class NewsDelegateAdapter : ViewTypeDelegateAdapter {
             description.text = item.title
             author.text = item.author
             img_thumbnail.loadImg(item.thumbnail)
-            comments.text = "${item.num_comments} comments"
+            comments.text = "${item.numComments} comments"
             time.text = item.created.getFriendlyTime()
 
         }
