@@ -2,6 +2,7 @@
 
 package com.caimuhao.kedditbysteps.commons.extensions
 
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -32,4 +33,8 @@ fun ImageView.loadImg(imageUrl: String) {
 
 fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(context, message, duration).show()
+}
+
+fun Fragment.showSnackbar(view: View, message: String, duration: Int = Snackbar.LENGTH_SHORT) {
+    Snackbar.make(view, message, duration).show()
 }

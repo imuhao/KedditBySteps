@@ -10,7 +10,7 @@ import com.caimuhao.kedditbysteps.bean.RedditNews
 import com.caimuhao.kedditbysteps.commons.BaseFragment
 import com.caimuhao.kedditbysteps.commons.InfiniteScrollListener
 import com.caimuhao.kedditbysteps.commons.extensions.inflate
-import com.caimuhao.kedditbysteps.commons.extensions.showToast
+import com.caimuhao.kedditbysteps.commons.extensions.showSnackbar
 import com.caimuhao.kedditbysteps.fatures.news.adapter.NewsAdapter
 import kotlinx.android.synthetic.main.fragment_news.*
 import rx.android.schedulers.AndroidSchedulers
@@ -73,7 +73,7 @@ class NewsFragment : BaseFragment() {
                     redditNews = retrievedNews
                     (news_list.adapter as NewsAdapter).addNews(redditNews!!.news)
                 }, { error ->
-                    showToast(error.message ?: "")
+                    showSnackbar(news_list, error.message ?: "")
                 })
     }
 }
