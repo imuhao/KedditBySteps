@@ -60,7 +60,7 @@ class NewsFragment : BaseFragment() {
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
         var news = (news_list.adapter as NewsAdapter).getNews()
-        if (redditNews != null && news.size > 0) {
+        if (redditNews != null && news.isNotEmpty()) {
             outState?.putParcelable(KEY_REDDIT_NEWS, redditNews?.copy(news = news))
         }
     }
