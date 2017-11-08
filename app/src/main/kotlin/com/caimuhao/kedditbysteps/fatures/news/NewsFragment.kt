@@ -25,6 +25,10 @@ class NewsFragment : BaseFragment() {
 
     private var redditNews: RedditNews? = null
 
+    companion object {
+        private var KEY_REDDIT_NEWS = "redditNews"
+    }
+
     private val newsManager by lazy {
         NewsManager()
     }
@@ -44,8 +48,21 @@ class NewsFragment : BaseFragment() {
             addOnScrollListener(InfiniteScrollListener({ requestData() }, news_list.layoutManager as LinearLayoutManager))
             adapter = NewsAdapter()
         }
-        requestData()
+        if (savedInstanceState != null && savedInstanceState.containsKey(KEY_REDDIT_NEWS)) {
+            var redittNews = savedInstanceState[KEY_REDDIT_NEWS] as RedditNews
+            (news_list.adapter as NewsAdapter).clearAndAddNews(redditNews!!.news)
+        } else {
+            requestData()
+        }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        var news = (news_list.adapter as NewsAdapter).getNews()
+        if (redditNews != null && news.size > 0) {
+            outState?.putParcelable(KEY_REDDIT_NEWS, redditNews?.copy(news = news))
+        }
     }
 
     private fun requestData() {
