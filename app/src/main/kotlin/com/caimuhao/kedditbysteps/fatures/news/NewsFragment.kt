@@ -54,7 +54,6 @@ class NewsFragment : BaseFragment() {
         } else {
             requestData()
         }
-
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
