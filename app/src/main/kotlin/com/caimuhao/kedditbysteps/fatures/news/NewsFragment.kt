@@ -48,9 +48,11 @@ class NewsFragment : BaseFragment() {
             addOnScrollListener(InfiniteScrollListener({ requestData() }, news_list.layoutManager as LinearLayoutManager))
             adapter = NewsAdapter()
         }
+
         if (savedInstanceState != null && savedInstanceState.containsKey(KEY_REDDIT_NEWS)) {
-            var redittNews = savedInstanceState.get(KEY_REDDIT_NEWS) as RedditNews
-            (news_list.adapter as NewsAdapter).clearAndAddNews(redditNews!!.news)
+            var redditNews = savedInstanceState.get(KEY_REDDIT_NEWS) as RedditNews
+            var news = redditNews!!.news
+            (news_list.adapter as NewsAdapter).clearAndAddNews(news)
         } else {
             requestData()
         }
@@ -70,7 +72,7 @@ class NewsFragment : BaseFragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ retrievedNews ->
                     redditNews = retrievedNews
-                    (news_list.adapter as NewsAdapter).addNews(retrievedNews.news)
+                    (news_list.adapter as NewsAdapter).addNews(redditNews!!.news)
                 }, { error ->
                     showToast(error.message ?: "")
                 })
