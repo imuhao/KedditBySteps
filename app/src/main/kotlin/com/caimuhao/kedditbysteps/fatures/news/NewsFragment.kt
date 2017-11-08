@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.caimuhao.kedditbysteps.R
-import com.caimuhao.kedditbysteps.api.RedditNews
+import com.caimuhao.kedditbysteps.bean.RedditNews
 import com.caimuhao.kedditbysteps.commons.BaseFragment
 import com.caimuhao.kedditbysteps.commons.InfiniteScrollListener
 import com.caimuhao.kedditbysteps.commons.extensions.inflate
@@ -44,6 +44,7 @@ class NewsFragment : BaseFragment() {
             adapter = NewsAdapter()
         }
         requestData()
+
     }
 
     private fun requestData() {

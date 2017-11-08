@@ -1,7 +1,7 @@
 package com.caimuhao.kedditbysteps.fatures.news
 
-import com.caimuhao.kedditbysteps.api.RedditNews
 import com.caimuhao.kedditbysteps.api.RestApi
+import com.caimuhao.kedditbysteps.bean.RedditNews
 import com.caimuhao.kedditbysteps.bean.RedditNewsItem
 import rx.Observable
 
