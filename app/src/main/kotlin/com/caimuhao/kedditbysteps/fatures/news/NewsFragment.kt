@@ -66,7 +66,7 @@ class NewsFragment : BaseFragment() {
     }
 
     private fun requestData() {
-        newsManager.getNews(redditNews?.after ?: "", 10)
+        val subscribe = newsManager.getNews(redditNews?.after ?: "", 10)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ retrievedNews ->
@@ -75,5 +75,6 @@ class NewsFragment : BaseFragment() {
                 }, { error ->
                     showSnackbar(news_list, error.message ?: "")
                 })
+        subscriptions.add(subscribe)
     }
 }
