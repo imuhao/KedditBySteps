@@ -44,4 +44,9 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.11'
     provided 'org.glassfish:javax.annotation:10.0-b28'
 
+    testCompile "org.mockito:mockito-core:2.+"
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.nhaarman:mockito-kotlin:0.7.0'
+    testCompile 'org.jetbrains.spek:spek:1.0.25'
+
 }

@@ -19,6 +19,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "http://repository.jetbrains.com/all"
+        }
     }
 }
 

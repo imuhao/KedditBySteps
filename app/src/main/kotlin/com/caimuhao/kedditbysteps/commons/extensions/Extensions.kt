@@ -31,6 +31,7 @@ fun ImageView.loadImg(imageUrl: String) {
     }
 }
 
+
 fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(context, message, duration).show()
 }

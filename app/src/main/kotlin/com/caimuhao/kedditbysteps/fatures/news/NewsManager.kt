@@ -1,5 +1,6 @@
 package com.caimuhao.kedditbysteps.fatures.news
 
+import com.caimuhao.kedditbysteps.api.NewsApi
 import com.caimuhao.kedditbysteps.api.RestApi
 import com.caimuhao.kedditbysteps.bean.RedditNews
 import com.caimuhao.kedditbysteps.bean.RedditNewsItem
@@ -10,9 +11,9 @@ import rx.Observable
  * @time 2017/11/6  14:45
  * @desc ${TODD}
  */
-class NewsManager(private val api: RestApi = RestApi()) {
+class NewsManager(private val api: NewsApi = RestApi()) {
 
-    fun getNews(after: String, limit: Int): Observable<RedditNews> {
+    fun getNews(after: String, limit: Int = 10): Observable<RedditNews> {
         return Observable.create { subscriber ->
             val execute = api.getNews(after, limit).execute()
             var response = execute.body().data

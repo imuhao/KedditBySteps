@@ -76,5 +76,7 @@ class NewsFragment : BaseFragment() {
                     showSnackbar(news_list, error.message ?: "")
                 })
         subscriptions.add(subscribe)
+
+
     }
 }
