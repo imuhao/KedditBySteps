@@ -1,5 +1,5 @@
 
-这个项目是我在博客写 Kotlin 系列教程的 Demo, 你可以点击下面的链接查看.这个系列将会持续更新.
+这个项目是我在博客写 Kotlin 系列教程的 Demo, 你可以点击下面的链接查看.
 
 - [Kotlin — Part 0:关于这个系列](http://caimuhao.com/2017/11/02/Learn-Kotlin-While-Developing-An-Android-App-Introduction/)
 - [Kotlin — Part 1:配置 Android Studio](http://caimuhao.com/2017/11/03/Learn-Kotlin-While-Developing-An-Android-App-Part1/)
@@ -10,3 +10,4 @@
 - [Kotlin — Part 6:API-Retrofit&Kotlin](http://caimuhao.com/2017/11/07/Learn-Kotlin-While-Developing-An-Android-App-Part6/)
 - [Kotlin — Part 7:无限滑动:高阶函数&Lambdas](http://caimuhao.com/2017/11/07/Learn-Kotlin-While-Developing-An-Android-App-Part7/)
 - [Kotlin — Part 8:方向改变(序列化&数据类)](http://caimuhao.com/2017/11/08/Learn-Kotlin-While-Developing-An-Android-App-Part8/)
+- [Kotlin — Part 9:单元测试与 Kotlin(Mockito,RxJava))](http://caimuhao.com/2017/11/09/Learn-Kotlin-While-Developing-An-Android-App-Part9/)
