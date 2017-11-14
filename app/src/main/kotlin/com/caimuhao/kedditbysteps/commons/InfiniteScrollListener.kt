@@ -2,7 +2,6 @@ package com.caimuhao.kedditbysteps.commons
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 
 /**
  * @author Smile
@@ -37,7 +36,6 @@ class InfiniteScrollListener(val func: () -> Unit,
             if (!loading && (totalItemCount - visibleItemCount)
                     <= (firstVisibleItem + visibleThreshold)) {
                 // End has been reached
-                Log.i("smile", "End reached")
                 func()
                 loading = true
             }
